@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Operaciones con señales</title>
+<meta name="description" content="Objeto virtual de aprendizaje: operaciones con señales aplicadas a la producción y postproducción de audio. Grupo 7, Multimedia Educativa, UMNG.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,400..600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&family=JetBrains+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="css/ova.css">
+</head>
+<body>
+<!--OVA-INICIO-->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-pista">
+    <span>0 dBFS es el techo digital</span>
+    <span>+6 dB ≈ el doble de amplitud</span>
+    <span>Mezclar es <u>sumar</u> señales</span>
+    <span>Ø invierte la polaridad: x(t) → −x(t)</span>
+    <span>5 ms de retardo no es eco: es filtro peine</span>
+    <span>El fader es un escalado: y(t) = k · x(t)</span>
+    <span>Trémolo = multiplicar por una señal lenta</span>
+    <span>Predice antes de tocar el control</span>
+  </div>
+</div>
+<header class="topbar">
+  <div class="inner">
+    <a class="marca-ova" href="#inicio" aria-label="Inicio del OVA">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="#141412" stroke-width="1.5"/><path d="M5 20h5l3-8 4 16 4-12 3 6 3-2h8" fill="none" stroke="#141412" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="20" r="2.4" fill="#E0561F"/></svg>
+      <span><b>Señales</b><small>OVA · Grupo 7 · UMNG</small></span>
+    </a>
+    <nav class="nodos" aria-label="Nodos del OVA">
+      <a href="#nova1"><span class="n">01</span> NOVA 1<span class="d"> · Reconocer</span></a>
+      <a href="#ovi"><span class="n">dB</span> OVI<span class="d"> · Decibel</span></a>
+      <a href="#nova2"><span class="n">02</span> NOVA 2<span class="d"> · Síntesis</span></a>
+      <a href="#nova3"><span class="n">03</span> NOVA 3<span class="d"> · DAW</span></a>
+      <a href="#cierre"><span class="n">∑</span> Cierre</a>
+    </nav>
+    <div class="puntaje" id="puntaje-global" aria-live="polite"><span>Puntaje</span> <b>00</b>/40</div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= INICIO ================= -->
+  <section class="vista" data-vista="inicio" id="v-inicio">
+    <div class="hero">
+      <div>
+        <p class="sello">OVA 1 · Multimedia Educativa · UMNG 2026-2</p>
+        <h1><span class="contorno">Operaciones con señales</span><em>aplicadas al audio</em></h1>
+        <p class="sub">Subes un fader, mezclas dos pistas, pones un delay. Cada vez estás ejecutando una operación matemática sobre una señal. Este recorrido te enseña a <mark>reconocerla, predecir su efecto y explicarla</mark> antes de tocar el control.</p>
+        <div class="botones">
+          <a class="btn" href="#nova1">Empezar el recorrido</a>
+          <a class="btn sec" href="#ovi">¿Qué es el decibel?</a>
+        </div>
+        <p class="estado-lms" id="estado-lms" style="margin-top:14px">Comprobando conexión con el aula…</p>
+      </div>
+      <div class="collage" id="collage" aria-hidden="true"></div>
+    </div>
+
+    <div class="bloque-hoja">
+      <div class="bloque-hoja-in">
+        <section class="ruta-sec" aria-labelledby="ruta-t">
+          <div class="cab-sec"><span class="mono">Índice</span><h2 id="ruta-t">Cuatro paradas, un orden que importa</h2></div>
+          <p class="texto">El recorrido es lineal: reconocer, sintetizar, aplicar. El objeto de información sobre el decibel no es una parada sino un recurso de consulta: entra y sal cuando lo necesites. En NOVA 2 los controles solo se desbloquean después de que <strong>predices</strong> el resultado; esa es la regla de todo el OVA.</p>
+          <div class="ruta">
+            <a href="#nova1"><span class="eyebrow">Actividad inicial</span><span class="grande">01</span><h3>Reconocimiento de señales</h3><p>Amplitud, frecuencia, periodo y fase. Las cuatro formas de onda, con un generador en vivo.</p><span class="pts">10 puntos · 15 min</span></a>
+            <a href="#ovi"><span class="eyebrow">Objeto de información</span><span class="grande">dB</span><h3>¿Qué es el decibel?</h3><p>Por qué los medidores marcan negativo. dBFS, dB SPL, headroom y clipping con un medidor real.</p><span class="pts">Consulta · 10 min</span></a>
+            <a href="#nova2"><span class="eyebrow">Síntesis de audio</span><span class="grande">02</span><h3>Banco de trabajo</h3><p>Escalado, suma, inversión, retardo y multiplicación. Predice, manipula y justifica.</p><span class="pts">20 puntos · 30 min</span></a>
+            <a href="#nova3"><span class="eyebrow">Trabajo en DAW · evaluativa</span><span class="grande">03</span><h3>Las mismas cinco, con otro nombre</h3><p>Mesa de mezcla, los dos micrófonos, una cadena por desarmar y la evaluación.</p><span class="pts">10 puntos + tarea · 30 min</span></a>
+          </div>
+        </section>
+
+        <figure class="video-marco" data-video>
+          <video class="video" controls preload="metadata" poster="media/intro.jpg"><source src="media/intro.mp4" type="video/mp4"></video>
+          <figcaption>Vídeo 0 · Intro del OVA (24 s): cinco gestos del DAW y la operación detrás de cada uno.</figcaption>
+        </figure>
+
+        <section class="meta-sec" aria-labelledby="meta-t">
+          <div class="cab-sec"><span class="mono">Meta</span><h2 id="meta-t">Qué vas a poder hacer al terminar</h2></div>
+          <p class="texto">Justificar una decisión de producción de audio identificando la <strong>operación elemental entre señales</strong> que la sustenta, y predecir su efecto antes de aplicarla. Dicho en concreto: ante una mezcla que satura o unos graves que desaparecen, nombrar la operación responsable antes de tocar un control.</p>
+          <ul class="requisitos mono"><li>Audífonos recomendados</li><li>Audio en vivo con Web Audio API</li><li>Todo lo que suena tiene su gráfica</li><li>Funciona dentro y fuera del aula</li></ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NOVA 1 ================= -->
+  <section class="vista" data-vista="nova1" id="v-nova1" hidden>
+    <div class="cabecera-nodo">
+      <span class="eyebrow">NOVA 1 · Reconocimiento · Actividad inicial</span>
+      <h1>Reconocimiento <em>de señales</em></h1>
+      <p class="lead">Antes de modificar una señal hay que saber describirla. Cuatro parámetros, cuatro formas de onda y una actividad para comprobar que los distingues con el oído y con la vista.</p>
+      <div class="meta-nodo"><span>Bloom · <b>Recordar, Comprender</b></span><span>Puntos · <b>10</b></span><span>Duración · <b>15 min</b></span></div>
+    </div>
+  </section>
+
+  <!-- ================= OVI ================= -->
+  <section class="vista" data-vista="ovi" id="v-ovi" hidden>
+    <div class="cabecera-nodo">
+      <span class="eyebrow">OVI 1 · Objeto de información transversal</span>
+      <h1>¿Qué es <em>el decibel?</em></h1>
+      <p class="lead">Un recurso de consulta, no una etapa. Entra desde cualquier punto del OVA cuando un medidor te muestre un número negativo o alguien diga headroom.</p>
+      <div class="meta-nodo"><span>Bloom · <b>Recordar</b></span><span>Puntos · <b>formativo</b></span><span>Duración · <b>10 min</b></span></div>
+    </div>
+    <figure class="video-marco" data-video>
+      <video class="video" controls preload="metadata" poster="media/decibel.jpg"><source src="media/decibel.mp4" type="video/mp4"></video>
+      <figcaption>Vídeo D · ¿Qué es el decibel? (30 s).</figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= NOVA 2 ================= -->
+  <section class="vista" data-vista="nova2" id="v-nova2" hidden>
+    <div class="cabecera-nodo">
+      <span class="eyebrow">NOVA 2 · Operaciones asociadas a la síntesis de audio</span>
+      <h1>Síntesis de señales: <em>el banco de trabajo</em></h1>
+      <p class="lead">Cinco operaciones elementales, explicadas, escuchadas y manipuladas una por una. Predices antes de tocar y justificas después de escuchar.</p>
+      <div class="meta-nodo"><span>Bloom · <b>Aplicar, Analizar, Crear</b></span><span>Puntos · <b>20</b></span><span>Duración · <b>30 min</b></span></div>
+    </div>
+  </section>
+
+  <!-- ================= NOVA 3 ================= -->
+  <section class="vista" data-vista="nova3" id="v-nova3" hidden>
+    <div class="cabecera-nodo">
+      <span class="eyebrow">NOVA 3 · Operaciones en el DAW · Actividad evaluativa</span>
+      <h1>Operaciones con señales <em>en el DAW</em></h1>
+      <p class="lead">Cada operación de NOVA 2 tiene un nombre comercial en la mesa de mezcla. Aquí las encuentras donde pasan de verdad: faders, buses, delays, polaridad, y una evaluación de cierre.</p>
+      <div class="meta-nodo"><span>Bloom · <b>Analizar, Evaluar, Crear</b></span><span>Puntos · <b>10 + 20 (tarea)</b></span><span>Duración · <b>30 min</b></span></div>
+    </div>
+  </section>
+
+  <!-- ================= CIERRE ================= -->
+  <section class="vista" data-vista="cierre" id="v-cierre" hidden>
+    <div class="cabecera-nodo">
+      <span class="eyebrow">Cierre del OVA</span>
+      <h1>Resultado <em>del recorrido</em></h1>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  OVA «Operaciones con señales y sus aplicaciones en la producción y postproducción de audio para productos multimedia» · Grupo 7: Juan David Urrego Fonseca y Laura Camila Rozo Rincón · Electiva Multimedia Educativa, prof. Gabriel Alfonso Rodríguez Puerto · Ingeniería en Multimedia, Universidad Militar Nueva Granada, 2026-2. HTML5 · Web Audio API · Canvas · SCORM 1.2.
+</footer>
+
+<script src="js/scorm.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/contenido.js"></script>
+<script src="js/app.js"></script>
+<script src="js/decor.js"></script>
+<script src="js/nova1.js"></script>
+<script src="js/ovi.js"></script>
+<script src="js/nova2.js"></script>
+<script src="js/nova3.js"></script>
+<script>App.iniciar();</script>
+<!--OVA-FIN-->
+</body>
+</html>
